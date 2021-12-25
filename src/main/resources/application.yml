@@ -1,0 +1,35 @@
+spring:
+  jwt:
+    secret: jwtsecretkey
+
+  datasource:
+    #    url: jdbc:h2:tcp://localhost/~/testDB
+    #    url: jdbc:h2:mem:testDB
+    #    driver-class-name: org.h2.Driver
+    url: jdbc:mariadb://localhost:3306/restful
+    username: root
+    password:
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        show_sql: true # 쿼리를 출력해준다.
+        format_sql: true # 쿼리를 예쁘게 출력해준다.
+        generate_statistics: true # 쿼리 수행 통계를 확인할 수 있다.
+
+  #devtools:
+    #livereload:
+    #enabled: true   # 정적 파일(js, css 등) 수정 시 자동 반영될 수 있도록 돕는다.
+
+  #thymeleaf:
+    #prefix: classpath:/templates/
+    #suffix: .html
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace   # sql query 에 들어오는 파라메타 값 추적

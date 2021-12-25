@@ -1,0 +1,58 @@
+구현사항
+회원가입, 로그인, 로그아웃
+상품조회, 상품주문
+주문내역
+
+URL
+Host: localhost:8080
+Content-type: application/json;charset=utf-8
+
+
+회원가입: post /users
+(회원리스트): get /users
+put, delete -- 405
+
+로그인 post /users/auth
+로그아웃 delete /users/auth
+put, get -- 405(put도 로그인으로 잡을까?)
+
+상품조회: get    /products
+(상품신규): post   /products
+put, delete -- 405
+
+개별상품조회: get /products/productNo
+(상품수정): put /products/productNo
+(상품삭제): delete /products/productNo
+put -- 405
+
+상품주문: post /orders (jwt)
+(리스트): get /orders
+put, delete -- 405
+
+회원주문내역: get  /users/userId/orders (jwt)
+(주문취소): delete /users/userId/orders
+(주문변경): post /users/userId/orders
+put -- 405
+
+
+요구사항
+- api 명세
+- content-type: json
+- response: json
+- spring-boot: latest, java: 11
+- ORM
+- DB migration file
+- Test Case
+- Dockerfile
+
+추가적으로 해야할 것
+- exception handling (handler, error code)
+
+- user(id - unique, email - unique, password - encrypted)
+- product(id - unique, name - string, price - krw)
+- order(id - unique, user_id, product_id)
+
+고민사항
+- 주문할 때 로그인이 안되었을 경우 -> 에러코드?
+- 상품조회 페이징?
+- 아이디 이메일 중복체크 api?
